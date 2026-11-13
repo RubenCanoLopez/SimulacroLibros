@@ -4,6 +4,7 @@ import org.example.biblioteca.autores.repositories.AutoresRepository;
 import org.example.biblioteca.libros.dto.LibroRequest;
 import org.example.biblioteca.libros.dto.LibroResponse;
 import org.example.biblioteca.libros.mappers.LibroMapper;
+import org.example.biblioteca.libros.repositories.LibrosRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -12,20 +13,22 @@ import java.math.BigDecimal;
 import java.util.Optional;
 
 /**
- * TAREA 5 · Sustituye cada throw por la implementacion.
- *   5.0 · Inyecta tambien el LibrosRepository por el constructor.
+ * TAREA 5 · Sustituye cada throw por la implementación.
+ *   5.0 · Inyecta también el LibrosRepository por el constructor.
  * Si un metodo no te sale, DEJA EL THROW y sigue: el proyecto tiene que compilar.
  */
 @Service
 public class LibrosServiceImpl implements LibrosService {
 
     private final AutoresRepository autoresRepository;
+    private final LibrosRepository repositorio;
     private final LibroMapper mapper;
 
-    public LibrosServiceImpl(AutoresRepository autoresRepository,
+    public LibrosServiceImpl(AutoresRepository autoresRepository, LibrosRepository repositorio,
                              LibroMapper mapper) {
         this.autoresRepository = autoresRepository;
         this.mapper = mapper;
+        this.repositorio = repositorio;
     }
 
     @Override

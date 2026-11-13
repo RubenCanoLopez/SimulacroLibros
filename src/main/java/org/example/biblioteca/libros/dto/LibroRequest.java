@@ -11,8 +11,8 @@ import java.math.BigDecimal;
  */
 public record LibroRequest(
 
-        @NotBlank(message = "El nombre del título es oligatorio")
-        @Size(max = 200)
+        @NotBlank(message = "El nombre del título es obligatorio")
+        @Size(min= 1, max = 200)
         String titulo,
 
         @NotBlank(message = "El ISBN debe ser obligatorio y cumplir con el patrón de este")
@@ -29,7 +29,8 @@ public record LibroRequest(
         Integer stock,
 
         @NotNull(message = "El año de publicación es obligatorio")
-        @Size(min = 1450, max = 2100)
+        @Min(value = 1450, message = "El año mínimo debe ser 1450")
+        @Max(value = 2100, message = "El año máximo debe ser 2100")
         Integer anioPublicacion,
 
         @NotNull(message = "El id del autor es obligatorio")
