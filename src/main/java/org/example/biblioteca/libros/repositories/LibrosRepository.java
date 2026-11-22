@@ -7,6 +7,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -23,4 +24,7 @@ public interface LibrosRepository extends JpaRepository<Libro, Long>, JpaSpecifi
     Page<Libro> findAll(Specification<Libro> spec, Pageable pageable);
 
 
+    List<Libro> id(Long id);
+
+    boolean existsByIsbn(String isbn);
 }

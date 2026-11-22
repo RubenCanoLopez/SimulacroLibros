@@ -36,6 +36,11 @@ public class AutoresServiceImpl implements AutoresService {
 
         // TODO 1.f · numeroDeLibros = cuantos libros NO borrados tiene el autor,
         //            contados con el lado inverso de la relacion (autor.getLibros())
-        return mapper.toResponse(autor, null);
+
+        long numeroDeLibros = autor.getLibros().stream()
+                .filter(libro -> !libro.isDeleted())
+                .count();
+
+        return mapper.toResponse(autor, numeroDeLibros);
     }
 }
